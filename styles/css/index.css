@@ -98,9 +98,10 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: xx-large;
   text-align: center;
+  margin: 2%;
 }
 
-.problem h1 {
+.problem h2 {
   font-size: medium;
   font-weight: bold;
 }
@@ -121,4 +122,13 @@
   background-color: #000000;
   overflow: hidden;
   width: 10%;
+}
+
+.singleOption {
+  background-color: #9cd2ff;
+  line-height: 2em;
+}
+
+.footer {
+  margin-top: 10%;
 }

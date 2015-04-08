@@ -30,8 +30,8 @@
         时间:
         <input class="input" type="text" placeholder="  100 分钟" disabled="disabled">
         &nbsp;&nbsp;
-        得分:
-        <span class="scoreLine"></span>
+        <span>得分:<span class="scoreLine"></span></span>
+
         <br>
         班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:
         <input class="input" type="text" id="studentClass" placeholder="">
@@ -46,7 +46,7 @@
     <br>
     <br>
 
-    <div class="problem">
+    <article class="problem">
         <h1>一 、填空题</h1>
 
         <p>
@@ -54,21 +54,21 @@
         </p>
 
         <p>
-            2. 对象最突出的特征是:&nbsp;<input class="input" type="text" id="fillingInBlank2" placeholder="">&nbsp;、<input class="input" type="text" placeholder="">&nbsp;、<input class="input" type="text" placeholder="">&nbsp;。
+            2. 对象最突出的特征是:&nbsp;<input class="input" type="text" id="fillingInBlank2-1" placeholder="">&nbsp;、<input class="input" type="text" id="fillingInBlank2-2" placeholder="">&nbsp;、<input class="input" type="text" id="fillingInBlank2-3" placeholder="">&nbsp;。
         </p>
-    </div>
+    </article>
 
-    <div class="problem">
+    <article class="problem">
         <h1>
             二 、选择题
         </h1>
 
         <p>
             1.UML 与软件工程的关系是:
-            <input type="radio" name="two1" value="a" id="option1-1"><label for="option1-1">UML 就是软件工程</label>
-            <input type="radio" name="two1" value="b" id="option1-2"><label for="option1-2">UML 参与到软件工程中软件开发过程的几个阶段</label>
-            <input type="radio" name="two1" value="c" id="option1-3"><label for="option1-3">UML 与软件工程无关</label>
-            <input type="radio" name="two1" value="d" id="option1-4"><label for="option1-4">UML 是软件工程的一部分</label>
+            <input class="singleOption" type="radio" name="two1" value="a" id="option1-1"><label for="option1-1">UML 就是软件工程</label>
+            <input class="singleOption" type="radio" name="two1" value="b" id="option1-2"><label for="option1-2">UML 参与到软件工程中软件开发过程的几个阶段</label>
+            <input class="singleOption" type="radio" name="two1" value="c" id="option1-3"><label for="option1-3">UML 与软件工程无关</label>
+            <input class="singleOption" type="radio" name="two1" value="d" id="option1-4"><label for="option1-4">UML 是软件工程的一部分</label>
         </p>
 
         <p>
@@ -79,9 +79,9 @@
             <input type="radio" name="two2" value="d" id="option2-4"><label for="option2-4">单继承和多继承都不支持</label>
         </p>
 
-    </div>
+    </article>
 
-    <div class="problem">
+    <article class="problem">
         <h1>
             三 、多选题
         </h1>
@@ -103,43 +103,41 @@
         </p>
 
 
-    </div>
+    </article>
 
-    <div class="problem">
+    <article class="problem">
         <h1>
             四 、判断题
         </h1>
 
         1. 用例图只是用于和客户交流和沟通的,用于确定需求。
-        <input type="radio" name="forth1" value="right" id="judge1-1"><label for="judge1-1">true</label>
-        <input type="radio" name="forth1" value="false" id="judge1-2"><label for="judge1-2">false</label>
+        <input type="radio" name="judge1" value="true" id="judge1-1"><label for="judge1-1">true</label>
+        <input type="radio" name="judge1" value="false" id="judge1-2"><label for="judge1-2">false</label>
         <br>
         2. 在状态图中,终止状态在一个状态图中允许有任意多个。
-        <input type="radio" name="forth2" value="right" id="judge2-1"><label for="judge2-1">true</label>
-        <input type="radio" name="forth2" value="false" id="judge2-2"><label for="judge2-2">false</label>
+        <input type="radio" name="judge2" value="true" id="judge2-1"><label for="judge2-1">true</label>
+        <input type="radio" name="judge2" value="false" id="judge2-2"><label for="judge2-2">false</label>
 
-    </div>
+    </article>
 
-    <div class="problem">
-        <h1>
+    <article class="problem">
+        <h2>
             五 、简 答 题 ( 每 题 4 分 , 共 20 分 )
-        </h1>
+        </h2>
         <p>
             1. 简述什么是模型以及模型的表现形式?
-            <textarea  name="shortAnswer" cols="36" rows="8" required="required" ></textarea>
+            <label>
+                <textarea name="shortAnswer" cols="36" rows="8" required="required"></textarea>
+            </label>
         </p>
 
 
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <button type="button" id="submit" class="btn btn-lg btn-success btn-block ">提交
-    </button>
+    </article>
+
+    <footer class="footer">
+        <button type="button" id="submit" class="btn btn-lg btn-success btn-block ">提交
+        </button>
+    </footer>
 </div>
 
 </body>
