@@ -59,35 +59,48 @@ PageSniffer.prototype.getShortAnswer = function () {
 
 var pageSniffer = new PageSniffer();
 
+function StorageInfo() {
+    this.storageNameArray = [
+        "studentInfo",
+        "fillingInBlank",
+        "singleOption",
+        "multipleOption",
+        "judgeResult",
+        "shortProblem"];
+    this.storageStandardAnswer = {
+        fillingInBlankAnswer:[["统一建模语言"], ["封装", "继承", "多态"]],
+        singleOptionAnswer:['b', 'a'],
+        mutipleOptionAnswer:[['a', 'b', 'd'], ['a', 'b', 'c']],
+        judgeResultAnswer: ['false', 'true'],
+        shortProblem: {
+            standardAnswer:"模型是对现实世界的简化和抽象,模型是对所研究的系统、过程、事物或概念的一种表达形式。" +
+            "可以是物理实体;可以是某种图形;或者是一种数学表达式。",
+            keyWord:["数学表达式","物理实体","图形","现实世界","表达形式","系统","过程","概念"]
+        }
+    }
+
+}
+
+
 function getPageScore() {
 
-    var teacher = new Teacher(), score = 0;
-    var fillingInBlankAnswer = [["统一建模语言"], ["封装", "继承", "多态"]];
-    var singleOptionAnswer = ['b', 'a'];
-    var multipleOptionAnswer = [['a', 'b', 'd'], ['a', 'b', 'c']];
-    var judgeResultAnswer = ['false', 'true'];
-    var shortProblem = {
-        standardAnswer:"模型是对现实世界的简化和抽象,模型是对所研究的系统、过程、事物或概念的一种表达形式。" +
-        "可以是物理实体;可以是某种图形;或者是一种数学表达式。",
-        keyWord:["数学表达式","物理实体","图形","现实世界","表达形式","系统","过程","概念"]
-    };
+    var teacher = new Teacher(), storageStandardAnswer = new StorageInfo().storageStandardAnswer,score = 0 ;
+    var fillingInBlankAnswer = storageStandardAnswer.fillingInBlankAnswer,
+        singleOptionAnswer = storageStandardAnswer.singleOptionAnswer,
+        multipleOptionAnswer = storageStandardAnswer.mutipleOptionAnswer,
+        judgeResultAnswer = storageStandardAnswer.judgeResultAnswer,
+        shortProblem = storageStandardAnswer.shortProblem;
+    var storageNameArray = new StorageInfo().storageNameArray;
+    storageNameArray.splice(0,1);
+    console.log(storageNameArray,'0');
+    console.log(singleOptionAnswer,'1');
 
-
-    score += teacher.scoreFillingInBlank(JSON.parse(sessionStorage.getItem("fillingInBlank")), fillingInBlankAnswer);
-    console.log(score, '---');
-
-    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem("singleOption")), singleOptionAnswer);
-    console.log(score, '---');
-
-    score += teacher.scoreMultipleOption(JSON.parse(sessionStorage.getItem("multipleOption")), multipleOptionAnswer);
-    console.log(score, '---');
-
-    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem("judgeResult")), judgeResultAnswer);
-
-    score += teacher.scoreSingleShortProblem(JSON.parse(sessionStorage.getItem("shortProblem")),shortProblem);
-    console.log(score, '---');
+    score += teacher.scoreFillingInBlank(JSON.parse(sessionStorage.getItem(storageNameArray[0])), fillingInBlankAnswer);
+    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem(storageNameArray[1])), singleOptionAnswer);
+    score += teacher.scoreMultipleOption(JSON.parse(sessionStorage.getItem(storageNameArray[2])), multipleOptionAnswer);
+    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem(storageNameArray[3])), judgeResultAnswer);
+    score += teacher.scoreSingleShortProblem(JSON.parse(sessionStorage.getItem(storageNameArray[4])),shortProblem);
     return score;
-
 
 }
 
@@ -97,10 +110,8 @@ function getPageScore() {
 function showScore() {
     $("#score").attr("value", getPageScore());
 }
-function StorageName() {
-    this.storageNameArray = ["studentInfo", "fillingInBlank", "singleOption", "multipleOption", "judgeResult","shortProblem"];
 
-}
+
 
 
 function depositAnswerInfo() {
@@ -112,10 +123,9 @@ function depositAnswerInfo() {
     var shortProblem = pageSniffer.getShortAnswer();
 
     var pageInfo = [studentInfo, fillingInBlank, singleOption, multipleOption, judgeResult,shortProblem];
-    var storageNameArray = new StorageName().storageNameArray;
+    var storageNameArray = new StorageInfo().storageNameArray;
 
     setSessionStorageItem(storageNameArray, pageInfo);
-
 
 }
 
@@ -127,7 +137,7 @@ function setSessionStorageItem(name, data) {
 
 
 function isFinishWork() {
-    var storageNameArray = new StorageName().storageNameArray,judgeResult = true;
+    var storageNameArray = new StorageInfo().storageNameArray,judgeResult = true;
     _(storageNameArray).each(function (item){
         var storageItem = JSON.parse(sessionStorage.getItem(item));
         if(!_.isArray(storageItem)){
