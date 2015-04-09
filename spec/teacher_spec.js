@@ -121,6 +121,20 @@ describe("teacher's duty test", function(){
         expect(4).toEqual(teacher.scoreFillingInBlank(studentAnswer,correctAnswer));
     });
 
+    it("should output 5 when input correct shortAnswer answer of student ", function(){
+        studentAnswer = "模型是对现实世界的简化和抽象,模型是对所研究的系统、过程、事物或概念的一种表达形式。" +
+        "可以是物理实体;可以是某种图形;或者是一种数学表达式。";
+        correctAnswer = {
+            standardAnswer:"模型是对现实世界的简化和抽象,模型是对所研究的系统、过程、事物或概念的一种表达形式。" +
+            "可以是物理实体;可以是某种图形;或者是一种数学表达式。",
+            keyWord:["数学表达式","物理实体","图形","现实世界","表达形式","系统","过程","概念"]
+        };
+
+        expect(5).toEqual(teacher.scoreSingleShortProblem(studentAnswer,correctAnswer));
+
+    });
+
+
 
 
 

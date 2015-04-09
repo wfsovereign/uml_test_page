@@ -55,6 +55,15 @@ Teacher.prototype.scoreFillingInBlank = function (studentAnswer,correctAnswer) {
     return score;
 };
 
+Teacher.prototype.scoreSingleShortProblem = function (studentAnswer,correctAnswer) {
+    var score = 0;
+    if(studentAnswer == correctAnswer.standardAnswer){
+        score =5;
+    }
+
+    return score;
+};
+
 
 
 
