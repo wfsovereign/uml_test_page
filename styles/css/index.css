@@ -1,5 +1,6 @@
 .header {
   margin-top: 5%;
+  margin-bottom: 2%;
 }
 .header p {
   font-size: small;
@@ -82,12 +83,12 @@
 
 .input {
   border-top: none;
-  border-bottom: solid;
+  border-bottom: 2px solid;
   border-left: none;
   border-right: none;
   line-height: 1.8em;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
+  margin-left: 1em;
+  background: white;
 }
 
 .title {
@@ -122,11 +123,41 @@
   background-color: #000000;
   overflow: hidden;
   width: 10%;
+  clear: both;
 }
 
 .singleOption {
   background-color: #9cd2ff;
   line-height: 2em;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .fixed {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .fixed {
+    width: 1170px;
+  }
+}
+@media (min-width: 970px) {
+  .fixed {
+    width: 1170px;
+  }
+}
+@media (min-width: 1200px) {
+  .fixed {
+    width: 1170px;
+  }
 }
 
 .footer {

@@ -7,6 +7,9 @@
     <link type="text/css" href="styles/css/index.css" rel="stylesheet">
     <script src="dist/js/jquery.js"></script>
     <script src="index.js"></script>
+    <script src="/dist/underscore.js"></script>
+    <script src="src/teacher.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -25,12 +28,13 @@
 
     <div class="container">
         考试科目:
-        <input class="input" type="text" placeholder="  统一建模语言UML" disabled="disabled">
+        <input class="input" type="text" value="  统一建模语言UML"  disabled="disabled">
         &nbsp;&nbsp;
         时间:
-        <input class="input" type="text" placeholder="  100 分钟" disabled="disabled">
+        <input class="input" type="text" value="  100 分钟" disabled="disabled">
         &nbsp;&nbsp;
-        <span>得分:<span class="scoreLine"></span></span>
+        得分:
+        <input class="input" type="text" id="score" disabled="disabled" placeholder="">
 
         <br>
         班&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;级:
@@ -50,11 +54,11 @@
         <h1>一 、填空题</h1>
 
         <p>
-            1. UML的中文全称是:&nbsp;<input class="input" type="text" id="fillingInBlank1" placeholder="">&nbsp;。
+            1. UML的中文全称是:<input class="input" type="text" id="fillingInBlank1" placeholder="">。
         </p>
 
         <p>
-            2. 对象最突出的特征是:&nbsp;<input class="input" type="text" id="fillingInBlank2-1" placeholder="">&nbsp;、<input class="input" type="text" id="fillingInBlank2-2" placeholder="">&nbsp;、<input class="input" type="text" id="fillingInBlank2-3" placeholder="">&nbsp;。
+            2. 对象最突出的特征是:<input class="input" type="text" id="fillingInBlank2-1" placeholder="">、<input class="input" type="text" id="fillingInBlank2-2" placeholder="">、<input class="input" type="text" id="fillingInBlank2-3" placeholder="">。
         </p>
     </article>
 
@@ -130,14 +134,13 @@
                 <textarea name="shortAnswer" cols="36" rows="8" required="required"></textarea>
             </label>
         </p>
-
-
     </article>
 
     <footer class="footer">
-        <button type="button" id="submit" class="btn btn-lg btn-success btn-block ">提交
+        <button type="button" id="submit" class="btn btn-lg btn-success btn-block fixed ">提交
         </button>
     </footer>
+
 </div>
 
 </body>

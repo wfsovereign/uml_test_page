@@ -1,11 +1,11 @@
-
-function PageSniffer(){
+function PageSniffer() {
 
 }
 
-PageSniffer.prototype.getFillingInBlank = function (){
+PageSniffer.prototype.getFillingInBlank = function () {
     var fillingInBlank = {};
-    fillingInBlank.one = $('#fillingInBlank1').val();
+    fillingInBlank.one = [];
+    fillingInBlank.one.push($('#fillingInBlank1').val());
     fillingInBlank.two = [];
     fillingInBlank.two.push($('#fillingInBlank2-1').val());
     fillingInBlank.two.push($('#fillingInBlank2-2').val());
@@ -13,17 +13,17 @@ PageSniffer.prototype.getFillingInBlank = function (){
     return fillingInBlank;
 };
 
-PageSniffer.prototype.getSingleOption = function (){
+PageSniffer.prototype.getSingleOption = function () {
     var singleOption = [];
     singleOption.push($("input[name='two1']:checked").val());
     singleOption.push($("input[name='two2']:checked").val());
     return singleOption;
 };
 
-PageSniffer.prototype.getMultipleOption = function (){
+PageSniffer.prototype.getMultipleOption = function () {
     var multipleOption = {
-        one:[],
-        two:[]
+        one: [],
+        two: []
     };
     $("input[name='three1']:checked").each(function () {
         multipleOption.one.push(this.value);
@@ -36,7 +36,7 @@ PageSniffer.prototype.getMultipleOption = function (){
 };
 
 
-PageSniffer.prototype.getJudgeResult = function (){
+PageSniffer.prototype.getJudgeResult = function () {
     var judgeResult = [];
     judgeResult.push($("input[name='judge1']:checked").val());
     judgeResult.push($("input[name='judge2']:checked").val());
@@ -53,15 +53,44 @@ PageSniffer.prototype.getStudentInfo = function () {
 
 
 function setSessionStorageItem(name, data) {
-    for(var i=0;i<name.length;i++){
-        sessionStorage.setItem(name[i],JSON.stringify(data[i]));
+    for (var i = 0; i < name.length; i++) {
+        sessionStorage.setItem(name[i], JSON.stringify(data[i]));
     }
 }
 
 
-
 var pageSniffer = new PageSniffer();
 
+
+
+
+function getPageScore() {
+
+    var teacher = new Teacher(), score = 0;
+    var fillingInBlankAnswer = [["统一建模语言"],["封装","继承","多态"]];
+    var singleOptionAnswer = ['b','c'];
+    var multipleOptionAnswer = [['a','b','d'],['a','b','c']];
+    var judgeResultAnswer = ['false','true'];
+    score += teacher.scoreFillingInBlank(JSON.parse(sessionStorage.getItem("fillingInBlank")),fillingInBlankAnswer);
+    console.log(score,'---');
+
+    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem("singleOption")),singleOptionAnswer);
+    console.log(score,'---');
+
+    score += teacher.scoreMultipleOption(JSON.parse(sessionStorage.getItem("multipleOption")),multipleOptionAnswer);
+    console.log(score,'---');
+
+    score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem("judgeResult")),judgeResultAnswer);
+
+    console.log(score,'---');
+    return score;
+
+
+}
+function showScore() {
+
+    $("#score").attr("value",getPageScore()) ;
+}
 
 $(function () {
     $("#submit").on('click', function () {
@@ -71,11 +100,12 @@ $(function () {
         var multipleOption = pageSniffer.getMultipleOption();
         var judgeResult = pageSniffer.getJudgeResult();
 
-        var pageInfo = [studentInfo,fillingInBlank,singleOption,multipleOption,judgeResult];
-        var storageNameArray = ["studentInfo","fillingInBlank","singleOption","multipleOption","judgeResult"];
+        var pageInfo = [studentInfo, fillingInBlank, singleOption, multipleOption, judgeResult];
+        var storageNameArray = ["studentInfo", "fillingInBlank", "singleOption", "multipleOption", "judgeResult"];
 
-        setSessionStorageItem(storageNameArray,pageInfo);
+        setSessionStorageItem(storageNameArray, pageInfo);
 
+        showScore();
     })
 });
 

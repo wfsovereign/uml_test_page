@@ -13,6 +13,7 @@
   }
 
   margin-top: 5%;
+  margin-bottom: 2%;
 }
 
 .container {
@@ -83,12 +84,14 @@
 
 .input{
   border-top: none;
-  border-bottom: solid;
+  border-bottom: 2px solid;
   border-left: none;
   border-right: none;
   line-height: 1.8em;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
+  margin-left: 1em;
+  background: white;
+  //border-bottom-left-radius: 10%;
+  //border-bottom-right-radius: 10%;
 }
 
 .title {
@@ -100,6 +103,7 @@
   }
   border: 2px solid #160c13;
   background-color: #5e786b;
+
 }
 
 .problem {
@@ -125,7 +129,9 @@
   height: 1px;
   background-color: #000000;
   overflow: hidden;
-  width: 10%
+  width: 10%;
+  clear: both;
+
 }
 
 .singleOption{
@@ -133,7 +139,29 @@
   line-height: 2em;
 }
 
+.fixed{
+  position: fixed;
+  bottom: 0;
 
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+
+  @media (min-width: 768px) {
+    width: 750px
+  }
+  @media (min-width: 992px) {
+    width: 1170px
+  }
+  @media (min-width: 970px) {
+    width: 1170px
+  }
+  @media (min-width: 1200px) {
+    width: 1170px
+  }
+}
 
 
 .footer{
