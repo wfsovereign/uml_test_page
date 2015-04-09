@@ -10,7 +10,7 @@ PageSniffer.prototype.getFillingInBlank = function () {
     fillingInBlank.two.push($('#fillingInBlank2-1').val());
     fillingInBlank.two.push($('#fillingInBlank2-2').val());
     fillingInBlank.two.push($('#fillingInBlank2-3').val());
-    return fillingInBlank;
+    return [fillingInBlank.one,fillingInBlank.two];
 };
 
 PageSniffer.prototype.getSingleOption = function () {
@@ -32,7 +32,7 @@ PageSniffer.prototype.getMultipleOption = function () {
         multipleOption.two.push(this.value);
     });
 
-    return multipleOption;
+    return [multipleOption.one,multipleOption.two];
 };
 
 
@@ -92,20 +92,25 @@ function showScore() {
     $("#score").attr("value",getPageScore()) ;
 }
 
+function deposit() {
+    var studentInfo = pageSniffer.getStudentInfo();
+    var fillingInBlank = pageSniffer.getFillingInBlank();
+    var singleOption = pageSniffer.getSingleOption();
+    var multipleOption = pageSniffer.getMultipleOption();
+    var judgeResult = pageSniffer.getJudgeResult();
+
+    var pageInfo = [studentInfo, fillingInBlank, singleOption, multipleOption, judgeResult];
+    var storageNameArray = ["studentInfo", "fillingInBlank", "singleOption", "multipleOption", "judgeResult"];
+
+    setSessionStorageItem(storageNameArray, pageInfo);
+}
+
 $(function () {
     $("#submit").on('click', function () {
-        var studentInfo = pageSniffer.getStudentInfo();
-        var fillingInBlank = pageSniffer.getFillingInBlank();
-        var singleOption = pageSniffer.getSingleOption();
-        var multipleOption = pageSniffer.getMultipleOption();
-        var judgeResult = pageSniffer.getJudgeResult();
-
-        var pageInfo = [studentInfo, fillingInBlank, singleOption, multipleOption, judgeResult];
-        var storageNameArray = ["studentInfo", "fillingInBlank", "singleOption", "multipleOption", "judgeResult"];
-
-        setSessionStorageItem(storageNameArray, pageInfo);
-
+        deposit();
         showScore();
+        $(window).scrollTop($("header").offset().top);
+
     })
 });
 
