@@ -70,7 +70,7 @@ function StorageInfo() {
     this.storageStandardAnswer = {
         fillingInBlankAnswer:[["统一建模语言"], ["封装", "继承", "多态"]],
         singleOptionAnswer:['b', 'a'],
-        mutipleOptionAnswer:[['a', 'b', 'd'], ['a', 'b', 'c']],
+        multipleOptionAnswer:[['a', 'b', 'd'], ['a', 'b', 'c']],
         judgeResultAnswer: ['false', 'true'],
         shortProblem: {
             standardAnswer:"模型是对现实世界的简化和抽象,模型是对所研究的系统、过程、事物或概念的一种表达形式。" +
@@ -83,17 +83,14 @@ function StorageInfo() {
 
 
 function getPageScore() {
-
     var teacher = new Teacher(), storageStandardAnswer = new StorageInfo().storageStandardAnswer,score = 0 ;
     var fillingInBlankAnswer = storageStandardAnswer.fillingInBlankAnswer,
         singleOptionAnswer = storageStandardAnswer.singleOptionAnswer,
-        multipleOptionAnswer = storageStandardAnswer.mutipleOptionAnswer,
+        multipleOptionAnswer = storageStandardAnswer.multipleOptionAnswer,
         judgeResultAnswer = storageStandardAnswer.judgeResultAnswer,
         shortProblem = storageStandardAnswer.shortProblem;
     var storageNameArray = new StorageInfo().storageNameArray;
     storageNameArray.splice(0,1);
-    console.log(storageNameArray,'0');
-    console.log(singleOptionAnswer,'1');
 
     score += teacher.scoreFillingInBlank(JSON.parse(sessionStorage.getItem(storageNameArray[0])), fillingInBlankAnswer);
     score += teacher.scoreSingleOption(JSON.parse(sessionStorage.getItem(storageNameArray[1])), singleOptionAnswer);
